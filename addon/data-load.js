@@ -291,7 +291,7 @@ export function initScrollTable(scroller) {
   scroller.appendChild(scrolled);
 
   let initialRowHeight = 15; // constant: The initial estimated height of a row before it is rendered
-  let initialColWidth = 50; // constant: The initial estimated width of a column before it is rendered
+  let initialColWidth = 200; // constant: The initial estimated width of a column before it is rendered
   let bufferHeight = 500; // constant: The number of pixels to render above and below the current viewport
   let bufferWidth = 500; // constant: The number of pixels to render to the left and right of the current viewport
   let headerRows = 1; // constant: The number of header rows
@@ -458,6 +458,7 @@ export function initScrollTable(scroller) {
           td.className += " header";
         }
         td.style.minWidth = colWidths[c] + "px";
+        td.style.maxWidth = document.body.getBoundingClientRect().width + "px";
         td.style.height = rowHeights[r] + "px"; // min-height does not work on table cells, but height acts as min-height
         renderCell(data, cell, td);
         tr.appendChild(td);
